@@ -34,18 +34,18 @@
                     </tr>
                 </thead>
                 <tbody id="categories-table">
-                    <?php if(!empty($categories)):?>
-                    <?php foreach ($categories as $category): ?>
-                        <tr data-id="<?= $category->id ?>">
-                            <td><?= $category->id ?></td>
-                            <td contenteditable="true" data-field="name"><?= htmlspecialchars($category->name) ?></td>
-                            <td contenteditable="true" data-field="description"><?= htmlspecialchars($category->description) ?></td>
-                            <td>
-                                <button class="btn btn-sm btn-danger delete-category">Видалити</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    <?php endif;?>
+                    <?php if (!empty($categories)): ?>
+                        <?php foreach ($categories as $category): ?>
+                            <tr data-id="<?= $category->id ?>">
+                                <td><?= $category->id ?></td>
+                                <td contenteditable="true" data-field="name"><?= htmlspecialchars($category->name) ?></td>
+                                <td contenteditable="true" data-field="description"><?= htmlspecialchars($category->description) ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger delete-category">Видалити</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
 
@@ -105,6 +105,7 @@
 
     document.querySelectorAll('.delete-category').forEach(btn => {
         btn.addEventListener('click', function() {
+            if (!confirm('Видалити категорію?')) return;
             const tr = btn.closest('tr');
             const id = tr.dataset.id;
 

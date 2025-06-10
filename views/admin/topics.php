@@ -149,6 +149,7 @@
 
     document.querySelectorAll('.delete-topic').forEach(btn => {
         btn.addEventListener('click', function() {
+            if (!confirm('Видалити тему?')) return;
             const tr = btn.closest('tr');
             const id = tr.dataset.id;
 

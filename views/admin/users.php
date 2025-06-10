@@ -155,6 +155,7 @@
 
     usersTable.addEventListener("click", (e) => {
         if (e.target.matches(".delete-user")) {
+            if (!confirm('Видалити користувача?')) return;
             const tr = e.target.closest("tr");
             const id = tr.dataset.id;
 
